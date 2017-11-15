@@ -20,30 +20,20 @@ defmodule MinMaxStack do
   """
   def push stack, item do
     store = [item | stack.store]
-    [max | _] = max_hist = push_to_max_hist(stack.max_hist, item)
-    [min | _] = min_hist = push_to_min_hist(stack.min_hist, item)
+    [max | _] = max_hist = push_to_hist(stack.max_hist, item, &>=/2)
+    [min | _] = min_hist = push_to_hist(stack.min_hist, item, &<=/2)
     %MinMaxStack{
       min: min, max: max, min_hist: min_hist, max_hist: max_hist, store: store
     }
   end
 
-  defp push_to_max_hist([], item), do: [item]
+  defp push_to_hist([], item, _comparator), do: [item]
 
-  defp push_to_max_hist [max | _] = max_hist, item do
-    if item >= max do
-      [item | max_hist]
+  defp push_to_hist [minmax | _] = hist, item, comparator do
+    if comparator.(item, minmax) do
+      [item | hist]
     else
-      max_hist
-    end
-  end
-
-  defp push_to_min_hist([], item), do: [item]
-
-  defp push_to_min_hist [min | _] = min_hist, item do
-    if item <= min do
-      [item | min_hist]
-    else
-      min_hist
+      hist
     end
   end
 
@@ -52,7 +42,7 @@ defmodule MinMaxStack do
 
   ## Examples
 
-      
+
 
   """
   def pop stack do

@@ -58,13 +58,23 @@ defmodule MinMaxStack do
   """
   def pop stack do
     [item | store] = stack.store
-    [max | _] = max_hist = push_to_max_hist(stack.max_hist, item)
-    [min | _] = min_hist = push_to_min_hist(stack.min_hist, item)
+    [max | _] = max_hist = pop_from_hist(stack.max_hist, item)
+    [min | _] = min_hist = pop_from_hist(stack.min_hist, item)
 
     min_max_stack = %MinMaxStack{
       min: min, max: max, min_hist: min_hist, max_hist: max_hist, store: store
     }
 
     {min_max_stack, item}
+  end
+
+  defp pop_from_hist([], _item), do: []
+
+  defp pop_from_hist([minmax | remaining_hist] = hist, item) do
+    if item == minmax do
+      remaining_hist
+    else
+      hist
+    end
   end
 end

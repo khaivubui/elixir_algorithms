@@ -1,3 +1,3 @@
 defmodule MinMaxQueue do
-  defstruct [:model, :make, store: []]
+  defstruct [:min, :max, min_stack: [], max_stack: [],store: []]
 end

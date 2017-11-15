@@ -1,10 +1,10 @@
 defmodule Fibonacci do
   @moduledoc """
-  Find the nth number of the fibonacci sequence.
+  Finds the nth number of the fibonacci sequence.
   """
 
   @doc """
-  Find the nth number of the fibonacci sequence in exponential time complexity
+  Finds the nth number of the fibonacci sequence in exponential time complexity
 
   ## Examples
 
@@ -19,4 +19,8 @@ defmodule Fibonacci do
   def exponential_fib(n) do
     exponential_fib(n - 1) + exponential_fib(n - 2)
   end
+
+  @doc """
+  Finds the nth number of the fibonacci sequence in linear time complexity
+  """
 end

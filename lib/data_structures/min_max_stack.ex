@@ -23,7 +23,9 @@ defmodule MinMaxStack do
     [max | _] = max_hist = push_to_hist(stack.max_hist, item, &>=/2)
     [min | _] = min_hist = push_to_hist(stack.min_hist, item, &<=/2)
     %MinMaxStack{
-      min: min, max: max, min_hist: min_hist, max_hist: max_hist, store: store
+      min: min, max: max,
+      min_hist: min_hist, max_hist: max_hist,
+      store: store
     }
   end
 
@@ -51,7 +53,9 @@ defmodule MinMaxStack do
     [min | _] = min_hist = pop_from_hist(stack.min_hist, item)
 
     min_max_stack = %MinMaxStack{
-      min: min, max: max, min_hist: min_hist, max_hist: max_hist, store: store
+      min: min, max: max,
+      min_hist: min_hist, max_hist: max_hist,
+      store: store
     }
 
     {min_max_stack, item}

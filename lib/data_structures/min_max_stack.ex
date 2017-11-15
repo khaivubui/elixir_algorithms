@@ -10,12 +10,16 @@ defmodule MinMaxStack do
 
   ## Examples
 
-      iex> mmstack = %MinMaxStack{} |> MinMaxStack.push(1)
-      %MinMaxStack{max: 1, max_hist: [1], min: 1, min_hist: [1], store: [1]}
-      iex> mmstack = mmstack |> MinMaxStack.push(55)
+      iex> mmstack = %MinMaxStack{} |> MinMaxStack.push(1) |> MinMaxStack.push(55)
       %MinMaxStack{max: 55, max_hist: [55, 1], min: 1, min_hist: [1], store: [55, 1]}
+      iex> mmstack.min
+      1
+      iex> mmstack.max
+      55
       iex> mmstack = mmstack |> MinMaxStack.push(-100)
       %MinMaxStack{max: 55, max_hist: [55, 1], min: -100, min_hist: [-100,1], store: [-100, 55, 1]}
+      iex> mmstack.min
+      -100
 
   """
   def push stack, item do

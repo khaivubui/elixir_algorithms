@@ -4,7 +4,7 @@ defmodule MinMaxStackTest do
 
   import MinMaxStack
 
-  test "has correct access to min and max through multiple pushes and pops" do
+  test "MinMaxStack has correct access to min and max through multiple pushes and pops" do
     mmstack = %MinMaxStack{} |> push(1) |> push(2)
 
     assert mmstack.min == 1

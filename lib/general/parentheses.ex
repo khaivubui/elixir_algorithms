@@ -34,7 +34,7 @@ defmodule Parentheses do
     balance_check_step paren_list, [current_paren]
   end
 
-  defp balance_check_step [], stack do
+  defp balance_check_step [], _stack do
     false
   end
 

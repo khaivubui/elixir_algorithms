@@ -20,6 +20,17 @@ defmodule Stack do
     %Stack{store: [item | stack.store]}
   end
 
+  @doc """
+  pops an item from the stack. Returns a tuple with stack and the item
+
+  ## Examples
+
+      iex> %Stack{store: ["super", "man"]} |> Stack.pop
+      {%Stack{store: ["man"]}, "super"}
+      iex> %Stack{store: ["man"]} |> Stack.pop
+      {%Stack{store: []}, "man"}
+      
+  """
   def pop stack do
     [item | store] = stack.store
     {%Stack{store: store}, item}

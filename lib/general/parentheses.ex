@@ -8,14 +8,14 @@ defmodule Parentheses do
 
   ## Examples
 
-    iex> Parentheses.balance_check "{Khai"
-    false
-    iex> Parentheses.balance_check "{Khai}"
-    true
-    iex> Parentheses.balance_check "{Khai]}"
-    false
-    iex> Parentheses.balance_check "{(Kha)i[]}"
-    true
+      iex> Parentheses.balance_check "{Khai"
+      false
+      iex> Parentheses.balance_check "{Khai}"
+      true
+      iex> Parentheses.balance_check "{Khai]}"
+      false
+      iex> Parentheses.balance_check "{(Kha)i[]}"
+      true
 
   """
   def balance_check string do

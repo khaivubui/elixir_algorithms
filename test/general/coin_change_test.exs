@@ -2,7 +2,7 @@ defmodule CoinChangeTest do
   use ExUnit.Case
   doctest CoinChange
 
-  test "finds smallest coin set" do
+  test "CoinChange.min_coinset/2 finds smallest coin set" do
     assert CoinChange.min_coinset(1, [1, 5, 7, 10]) == [1]
     assert CoinChange.min_coinset(2, [1, 5, 7, 10]) == [1,1]
     assert CoinChange.min_coinset(3, [1, 5, 7, 10]) == [1,1,1]

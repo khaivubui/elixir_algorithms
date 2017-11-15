@@ -10,10 +10,12 @@ defmodule MinMaxStack do
 
   ## Examples
 
-      iex> %Stack{} |> Stack.push(1)
-      %Stack{store: [1]}
-      iex> %Stack{} |> Stack.push(1) |> Stack.push("apple")
-      %Stack{store: ["apple", 1]}
+      iex> mmstack = %MinMaxStack{} |> MinMaxStack.push(1)
+      %MinMaxStack{max: 1, max_hist: [1], min: 1, min_hist: [1], store: [1]}
+      iex> mmstack = mmstack |> MinMaxStack.push(55)
+      %MinMaxStack{max: 55, max_hist: [55, 1], min: 1, min_hist: [1], store: [55, 1]}
+      iex> mmstack = mmstack |> MinMaxStack.push(-100)
+      %MinMaxStack{max: 55, max_hist: [55, 1], min: -100, min_hist: [-100,1], store: [-100, 55, 1]}
 
   """
   def push stack, item do
@@ -50,10 +52,7 @@ defmodule MinMaxStack do
 
   ## Examples
 
-      iex> %Stack{store: ["super", "man"]} |> Stack.pop
-      {%Stack{store: ["man"]}, "super"}
-      iex> %Stack{store: ["man"]} |> Stack.pop
-      {%Stack{store: []}, "man"}
+      
 
   """
   def pop stack do

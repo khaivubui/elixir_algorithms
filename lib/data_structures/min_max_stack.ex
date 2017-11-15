@@ -35,7 +35,7 @@ defmodule MinMaxStack do
 
   defp push_to_hist([], item, _comparator), do: [item]
 
-  defp push_to_hist [minmax | _] = hist, item, comparator do
+  defp push_to_hist([minmax | _] = hist, item, comparator) do
     if comparator.(item, minmax) do
       [item | hist]
     else

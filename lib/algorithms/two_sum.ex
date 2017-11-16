@@ -15,9 +15,9 @@ defmodule TwoSum do
     two_sum_step numbers, sum, tracker, []
   end
 
-  def to_counter_map([], counter_map), do: counter_map
+  defp to_counter_map([], counter_map), do: counter_map
 
-  def to_counter_map([current | numbers], counter_map) do
+  defp to_counter_map([current | numbers], counter_map) do
     counter = Map.get(counter_map, current, 0) + 1
     to_counter_map numbers, Map.put(counter_map, current, counter)
   end

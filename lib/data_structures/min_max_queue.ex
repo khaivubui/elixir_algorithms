@@ -5,8 +5,7 @@ defmodule MinMaxQueue do
 
   def enqueue mm_q, item do
     in_stack = mm_q.in_stack |> push(item)
-    mm_q = update_min_max mm_q, in_stack, mm_q.out_stack
-    %{mm_q | in_stack: in_stack}
+    %{mm_q | in_stack: in_stack} |> update_min_max
   end
 
   def dequeue %MinMaxQueue{out_stack: %MinMaxStack{store: []}} = mm_q do
@@ -16,11 +15,11 @@ defmodule MinMaxQueue do
 
   def dequeue mm_q do
     {out_stack, item} = mm_q.out_stack |> pop()
-    mm_q = update_min_max mm_q, mm_q.in_stack, out_stack
-    {%{mm_q | out_stack: out_stack}, item}
+    mm_q = %{mm_q | out_stack: out_stack} |> update_min_max
+    {mm_q, item}
   end
 
-  defp update_min_max mm_q, in_stack, out_stack do
+  defp update_min_max %{in_stack: in_stack, out_stack: out_stack} = mm_q do
     max = case [in_stack.max, out_stack.max] do
       [max1, nil] -> max1
       [nil, max2] -> max2

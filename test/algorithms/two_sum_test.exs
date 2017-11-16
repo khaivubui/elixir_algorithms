@@ -8,6 +8,6 @@ defmodule TwoSumTest do
     assert TwoSum.two_sum([9, 1], 10) == [[9,1]]
     assert TwoSum.two_sum([9, 1], 11) == []
     assert TwoSum.two_sum([1, 2, 3, 4], 5) == [[2, 3], [1, 4]]
-    assert TwoSum.two_sum([1, 2, 3, 4], 4) == [[2, 2], [1, 3]]
+    assert TwoSum.two_sum([1, 2, 3, 4], 4) == [[1, 3]]
   end
 end

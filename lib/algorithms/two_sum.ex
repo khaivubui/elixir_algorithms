@@ -8,6 +8,8 @@ defmodule TwoSum do
       [[3, 4], [2, 5], [1, 6]]
       iex> TwoSum.two_sum [3, 5, 2, -4, 8, 11], 7
       [[-4, 11], [5, 2]]
+      iex> TwoSum.two_sum [2, 2, 2], 4
+      [[2, 2]]
 
   """
   def two_sum numbers, sum do
@@ -26,13 +28,12 @@ defmodule TwoSum do
 
   defp two_sum_step([current | numbers], sum, counter_map, result) do
     difference = sum - current
+    counter_map = counter_map |> Map.update!(current, & &1 - 1)
     case Map.get(counter_map, difference, 0) do
-      0 ->
+      count when count <= 0 ->
         two_sum_step numbers, sum, counter_map, result
       _ ->
-        counter_map = counter_map
-          |> Map.update!(current, & &1 - 1)
-          |> Map.update!(difference, & &1 - 1)
+        counter_map = counter_map |> Map.update!(difference, & &1 - 1)
         two_sum_step numbers, sum, counter_map, [[current, difference] | result]
     end
   end

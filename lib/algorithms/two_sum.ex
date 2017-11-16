@@ -4,9 +4,9 @@ defmodule TwoSum do
     two_sum_step numbers, sum, tracker, []
   end
 
-  def two_sum_step([], _sum, tracker, result), do: result
+  defp two_sum_step([], _sum, tracker, result), do: result
 
-  def two_sum_step [current | r_numbers] = numbers, sum, tracker, result do
+  defp two_sum_step [current | r_numbers] = numbers, sum, tracker, result do
     difference = sum - current
     if MapSet.member?(tracker, difference)  do
       tracker = tracker |> MapSet.delete(difference) |> MapSet.delete(current)

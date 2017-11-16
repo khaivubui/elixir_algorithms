@@ -18,11 +18,11 @@ defmodule MinMaxQueue do
     {%{mm_q | out_stack: out_stack}, item}
   end
 
-  def fill_out_stack %MinMaxQueue{in_stack: %MinMaxStack{store: []}} = mm_q do
+  defp fill_out_stack %MinMaxQueue{in_stack: %MinMaxStack{store: []}} = mm_q do
     mm_q
   end
 
-  def fill_out_stack mm_q do
+  defp fill_out_stack mm_q do
     {in_stack, item} = mm_q.in_stack |> pop()
     out_stack = mm_q.out_stack |> push(item)
     fill_out_stack %{mm_q | out_stack: out_stack, in_stack: in_stack}

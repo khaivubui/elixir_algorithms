@@ -48,7 +48,15 @@ defmodule MinMaxStack do
 
   ## Examples
 
-
+      iex> import MinMaxStack
+      iex> mmstack = %MinMaxStack{} |> push(1) |> push(55) |> push(-100)
+      iex> {mmstack, item} = mmstack |> pop
+      iex> item
+      -100
+      iex> mmstack.min
+      1
+      iex> mmstack.max
+      55
 
   """
   def pop stack do

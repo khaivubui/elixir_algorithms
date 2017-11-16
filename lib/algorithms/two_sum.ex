@@ -11,26 +11,29 @@ defmodule TwoSum do
 
   """
   def two_sum numbers, sum do
-    tracker = to_counter_map numbers, %{}
-    two_sum_step numbers, sum, tracker, []
+    counter_map = to_counter_map numbers, %{}
+    two_sum_step numbers, sum, counter_map, []
   end
 
-  defp to_counter_map([], counter_map), do: counter_map
+  defp to_counter_map([] = _numbers, counter_map), do: counter_map
 
   defp to_counter_map([current | numbers], counter_map) do
     counter = Map.get(counter_map, current, 0) + 1
     to_counter_map numbers, Map.put(counter_map, current, counter)
   end
 
-  defp two_sum_step([], _sum, _tracker, result), do: result
+  defp two_sum_step([] = _numbers, _sum, _counter_map, result), do: result
 
-  defp two_sum_step [current | numbers], sum, tracker, result do
+  defp two_sum_step([current | numbers], sum, counter_map, result) do
     difference = sum - current
-    if MapSet.member?(tracker, difference) do
-      tracker = tracker |> MapSet.delete(difference) |> MapSet.delete(current)
-      two_sum_step numbers, sum, tracker, [[current, difference] | result]
-    else
-      two_sum_step numbers, sum, tracker, result
+    case Map.get(counter_map, difference, 0) do
+      0 ->
+        two_sum_step numbers, sum, counter_map, result
+      _ ->
+        counter_map = counter_map
+          |> Map.update!(current, & &1 - 1)
+          |> Map.update!(difference, & &1 - 1)
+        two_sum_step numbers, sum, counter_map, [[current, difference] | result]
     end
   end
 end

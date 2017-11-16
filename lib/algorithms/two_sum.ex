@@ -11,8 +11,15 @@ defmodule TwoSum do
 
   """
   def two_sum numbers, sum do
-    tracker = MapSet.new(numbers)
+    tracker = to_counter_map numbers, %{}
     two_sum_step numbers, sum, tracker, []
+  end
+
+  def to_counter_map([], counter_map), do: counter_map
+
+  def to_counter_map([current | numbers], counter_map) do
+    counter = Map.get(counter_map, current, 0) + 1
+    to_counter_map numbers, Map.put(counter_map, current, counter)
   end
 
   defp two_sum_step([], _sum, _tracker, result), do: result

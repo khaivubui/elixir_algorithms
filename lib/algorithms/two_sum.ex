@@ -1,4 +1,8 @@
 defmodule TwoSum do
+  @moduledoc """
+  Finds pairs of numbers from a list that add to a target sum
+  """
+
   @doc """
   Takes a list of numbers and a target sum, returns a list of pairs that add up to the target sum
 

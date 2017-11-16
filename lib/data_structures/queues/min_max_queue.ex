@@ -1,13 +1,45 @@
 defmodule MinMaxQueue do
+  @moduledoc """
+  Queue implementation that has constant access to min and max
+  """
   import MinMaxStack
 
   defstruct [:min, :max, in_stack: %MinMaxStack{}, out_stack: %MinMaxStack{}]
 
+  @doc """
+  Add an item to a queue. Queue as constant access to min and max.
+
+  ## Examples
+
+      iex> import MinMaxQueue
+      iex> mm_q = %MinMaxQueue{} |> enqueue(1) |> enqueue(2) |> enqueue(3)
+      iex> mm_q.min
+      1
+      iex> mm_q.max
+      3
+
+  """
   def enqueue mm_q, item do
     in_stack = mm_q.in_stack |> push(item)
     %{mm_q | in_stack: in_stack} |> update_min_max
   end
 
+  @doc """
+  Remove an item from a queue. Queue as constant access to min and max.
+
+  ## Examples
+
+      iex> import MinMaxQueue
+      iex> mm_q = %MinMaxQueue{} |> enqueue(1) |> enqueue(2) |> enqueue(3)
+      iex> {mm_q, item} = mm_q |> dequeue
+      iex> mm_q.min
+      2
+      iex> mm_q.max
+      3
+      iex> item
+      1
+      
+  """
   def dequeue %MinMaxQueue{out_stack: %MinMaxStack{store: []}} = mm_q do
     mm_q = fill_out_stack mm_q
     dequeue mm_q

@@ -19,7 +19,7 @@ defmodule TwoSum do
 
   defp two_sum_step [current | numbers], sum, tracker, result do
     difference = sum - current
-    if MapSet.member?(tracker, difference)  do
+    if MapSet.member?(tracker, difference) do
       tracker = tracker |> MapSet.delete(difference) |> MapSet.delete(current)
       two_sum_step numbers, sum, tracker, [[current, difference] | result]
     else

@@ -24,8 +24,7 @@ defmodule TwoSum do
   defp to_counter_map([] = _numbers, counter_map), do: counter_map
 
   defp to_counter_map([current | numbers], counter_map) do
-    counter = Map.get(counter_map, current, 0) + 1
-    to_counter_map numbers, Map.put(counter_map, current, counter)
+    to_counter_map numbers, Map.update(counter_map, current, 1, & &1 + 1)
   end
 
   defp two_sum_step([] = _numbers, _sum, _counter_map, result), do: result

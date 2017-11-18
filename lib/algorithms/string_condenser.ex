@@ -15,10 +15,8 @@ defmodule StringCondenser do
       |> Enum.chunk_by(& &1 =~ ~r/\d/)
       |> Enum.map(& &1 |> Enum.join)
       |> Enum.chunk_every(2)
-      |> Enum.map(fn(chunk) ->
-        chunk
-          |> List.last
-          |> String.duplicate(chunk |> hd |> String.to_integer)
+      |> Enum.map(fn([num | [char | []]]) ->
+        char |> String.duplicate(num |> String.to_integer)
       end)
       |> Enum.join
   end

@@ -1,6 +1,7 @@
 defmodule StringCondenserTest do
   use ExUnit.Case
   doctest StringCondenser
+  import StringCondenser
 
   test "condenses a string" do
     assert StringCondenser.string_condenser("aaabb") == "3a2b"

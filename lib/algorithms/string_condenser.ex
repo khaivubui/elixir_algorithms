@@ -20,5 +20,6 @@ defmodule StringCondenser do
           |> List.last
           |> String.duplicate(chunk |> hd |> String.to_integer)
       end)
+      |> Enum.join
   end
 end

@@ -24,7 +24,7 @@ defmodule TwoSum do
   defp to_counter_map([] = _numbers, counter_map), do: counter_map
 
   defp to_counter_map([current | numbers], counter_map) do
-    to_counter_map numbers, Map.update(counter_map, current, 1, & &1 + 1)
+    to_counter_map(numbers, counter_map |> Map.update(current, 1, & &1 + 1))
   end
 
   defp two_sum_step([] = _numbers, _sum, _counter_map, result), do: result
@@ -32,7 +32,7 @@ defmodule TwoSum do
   defp two_sum_step([current | numbers], sum, counter_map, result) do
     difference = sum - current
     counter_map = counter_map |> Map.update!(current, & &1 - 1)
-    case Map.get(counter_map, difference, 0) do
+    case counter_map |> Map.get(difference, 0) do
       count when count <= 0 ->
         two_sum_step numbers, sum, counter_map, result
       _ ->

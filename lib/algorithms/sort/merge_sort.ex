@@ -1,4 +1,17 @@
 defmodule Sort.MergeSort do
+  @moduledoc """
+  Basic merge sort implementation
+  """
+
+  @doc """
+  Basic merge sort implementation
+
+  ## Examples
+
+      iex> import Sort.MergeSort
+      iex> Sort.merge_sort [38, 27, 43, 3, 9, 82, 10]
+      [3, 9, 10, 27, 38, 43, 82]
+  """
   def merge_sort([]), do: []
   def merge_sort([item | []]), do: [item]
 

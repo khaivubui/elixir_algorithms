@@ -9,11 +9,11 @@ defmodule Sort do
     left_list |> merge(right_list, [])
   end
 
-  def merge([], right_list, result), do: result ++ right_list
+  defp merge([], right_list, result), do: result ++ right_list
 
-  def merge(left_list, [], result), do: result ++ left_list
+  defp merge(left_list, [], result), do: result ++ left_list
 
-  def merge [l_item | l_remain] = l_list, [r_item | r_remain] = r_list, result do
+  defp merge [l_item | l_remain] = l_list, [r_item | r_remain] = r_list, result do
     case l_item < r_item do
       true -> merge l_remain, r_list, result ++ [l_item]
       false -> merge l_list, r_remain, result ++ [r_item]

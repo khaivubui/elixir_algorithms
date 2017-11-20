@@ -1,4 +1,4 @@
-defmodule Sort do
+defmodule Sort.MergeSort do
   def merge_sort([]), do: []
   def merge_sort([item | []]), do: [item]
 

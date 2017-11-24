@@ -8,13 +8,14 @@ defmodule Sort.Sorted do
 
   ## Examples
 
+      iex> import Sort.Sorted
       iex> sorted? [2,3,1]
       false
       iex> sorted? [2,3,4]
       true
-      
+
   """
-  def sorted?([current | []]), do: true
+  def sorted?([_current | []]), do: true
 
   def sorted? [current | remaining] do
     [next | _] = remaining

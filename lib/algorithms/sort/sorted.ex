@@ -1,4 +1,4 @@
-defmodule Sort.BubbleSort do
+defmodule Sort.Sorted do
   @moduledoc """
   Simple bubble sort implementation
   """

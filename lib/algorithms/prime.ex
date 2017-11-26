@@ -3,7 +3,7 @@ defmodule Prime do
 
   end
 
-  def is_prime?(1), do: true
+  def is_prime?(num) when num < 2, do: false
   def is_prime? num do
     is_prime_step num, num - 1
   end

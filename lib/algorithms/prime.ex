@@ -1,6 +1,17 @@
 defmodule Prime do
-  def primes n do
+  def primes count do
+    primes_step 2, [], 0, count
+  end
 
+  defp primes_step(_num, result, count, target_count) when count == target_count do
+    result |> Enum.reverse
+  end
+
+  defp primes_step num, result, count, target_count do
+    case is_prime? num do
+      true -> primes_step(num + 1, [num | result], count + 1, target_count)
+      false -> primes_step(num + 1, result, count, target_count)
+    end
   end
 
   def is_prime?(num) when num < 2, do: false

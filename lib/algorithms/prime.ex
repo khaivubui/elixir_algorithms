@@ -1,4 +1,16 @@
 defmodule Prime do
+  @moduledoc """
+  Prime related fucntions
+  """
+
+  @doc """
+  Takes a number and returns a list of that many numbers
+
+  ## Examples
+
+      iex> Prime.primes 10
+      [2,3,5,7,11,13,17,19,23,29]
+  """
   def primes count do
     primes_step 2, [], 0, count
   end

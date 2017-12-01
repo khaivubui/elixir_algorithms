@@ -28,6 +28,17 @@ defmodule Prime do
     end
   end
 
+  @doc """
+  Takes a number and returns whether or not the number is prime
+
+  ## Examples
+
+      iex> Prime.is_prime? 19
+      true
+      iex> Prime.is_prime? 20
+      false
+      
+  """
   def is_prime?(num) when num < 2, do: false
   def is_prime? num do
     is_prime_step num, num - 1

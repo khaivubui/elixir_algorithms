@@ -12,6 +12,7 @@ defmodule MaxDiff do
       8
       iex> MaxDiff.max_diff [7, 9, 5, 6, 3, 2]
       2
+      
   """
   def max_diff([]), do: :error
   def max_diff([_|[]]), do: :error

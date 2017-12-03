@@ -12,14 +12,12 @@ defmodule MaxDiff do
       8
       iex> MaxDiff.max_diff [7, 9, 5, 6, 3, 2]
       2
-      
+
   """
-  def max_diff([]), do: :error
-  def max_diff([_|[]]), do: :error
   def max_diff([first_el | [second_el | list]]) do
     max_diff = second_el - first_el
     min_el = first_el
-    max_diff_step list, max_diff, min_el
+    max_diff_step(list, max_diff, min_el)
   end
 
   def max_diff_step([], max_diff, _min_el), do: max_diff

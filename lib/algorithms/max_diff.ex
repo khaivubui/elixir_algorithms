@@ -16,7 +16,7 @@ defmodule MaxDiff do
   """
   def max_diff([first_el | [second_el | list]]) do
     max_diff = second_el - first_el
-    min_el = first_el
+    min_el = Enum.min([first_el, second_el])
     max_diff_step(list, max_diff, min_el)
   end
 

@@ -1,0 +1,3 @@
+defmodule MaxDiff do
+  
+end
